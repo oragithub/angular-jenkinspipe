@@ -32,7 +32,7 @@ node {
 
     stage('Build') {
         milestone()
-        sh 'ng build --prod --aot --sm --progress=false'
+        sh 'ng build --prod --aot '
     }
 
     stage('Archive') {
