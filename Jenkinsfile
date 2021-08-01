@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stages {
+  node {
     stage('Cloning Git') {
       deleteDir()
       checkout scm
@@ -37,3 +37,5 @@ pipeline {
     }
   }
 }
+
+
