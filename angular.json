@@ -138,6 +138,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "master10"
+    }
+  },
+  "defaultProject": "master10",
+  "cli": {
+    "analytics": "09e68cef-c978-4088-9e5a-7999b0d8babd"
+  }
 }
