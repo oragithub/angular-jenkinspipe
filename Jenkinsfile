@@ -31,16 +31,18 @@ node {
     }
 
     stage('Building image') {
-
-          dockerImage = docker.build imagename
+        withEnv(["imagename=radhouenassakra/angular-demo"]) {
+                    dockerImage = docker.build imagename
+                }
       }
     stage('Deploy Image') {
+            withEnv(["registryCredential=dockerhub"]) {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push('latest')
 
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-
-        }
+                    }
+            }
       }
     stage('Remove Unused docker image') {
         sh "docker rmi $imagename:$BUILD_NUMBER"
